@@ -1,0 +1,592 @@
+# Macro Catalog
+# Source of Truth for all Macro Indicators
+
+# --- US Core ---
+- key: us_gdp
+  display_name: Real GDP
+  category: Growth
+  region: US
+  source: FRED
+  series_id: GDPC1
+  frequency: quarterly
+  unit: Billions USD
+  transform_default: yoy
+  priority: 1
+  status: MAPPED
+
+- key: us_gdp_nominal
+  display_name: Nominal GDP
+  category: Growth
+  region: US
+  source: FRED
+  series_id: GDP
+  frequency: quarterly
+  unit: Billions USD
+  transform_default: yoy
+  priority: 2
+  status: MAPPED
+
+- key: us_cpi
+  display_name: CPI
+  category: Inflation
+  region: US
+  source: FRED
+  series_id: CPIAUCSL
+  frequency: monthly
+  unit: Index 1982=100
+  transform_default: yoy
+  fallback_key: massive_inflation_cpi
+  priority: 1
+  status: MAPPED
+
+- key: us_pce
+  display_name: PCE Price Index
+  category: Inflation
+  region: US
+  source: FRED
+  series_id: PCEPI
+  frequency: monthly
+  unit: Index 2012=100
+  transform_default: yoy
+  fallback_key: massive_inflation_pce
+  priority: 1
+  status: MAPPED
+
+- key: us_core_pce
+  display_name: Core PCE
+  category: Inflation
+  region: US
+  source: FRED
+  series_id: PCEPILFE
+  frequency: monthly
+  unit: Index 2012=100
+  transform_default: yoy
+  fallback_key: massive_inflation_pce_core
+  priority: 1
+  status: MAPPED
+
+- key: us_ppi
+  display_name: PPI All Commodities
+  category: Inflation
+  region: US
+  source: FRED
+  series_id: PPIACO
+  frequency: monthly
+  unit: Index 1982=100
+  transform_default: yoy
+  priority: 2
+  status: MAPPED
+
+- key: us_fed_funds
+  display_name: Fed Funds Rate
+  category: Rates
+  region: US
+  source: FRED
+  series_id: FEDFUNDS
+  frequency: monthly
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: MAPPED
+
+- key: us_unrate
+  display_name: Unemployment Rate
+  category: Labor
+  region: US
+  source: FRED
+  series_id: UNRATE
+  frequency: monthly
+  unit: Percent
+  transform_default: level
+  fallback_key: massive_unemployment_rate
+  priority: 1
+  status: MAPPED
+
+- key: us_nfp
+  display_name: Total Nonfarm Payrolls
+  category: Labor
+  region: US
+  source: FRED
+  series_id: PAYEMS
+  frequency: monthly
+  unit: Thousands
+  transform_default: mom
+  priority: 1
+  status: MAPPED
+
+- key: us_wages
+  display_name: Avg Hourly Earnings
+  category: Labor
+  region: US
+  source: FRED
+  series_id: AHETPI
+  frequency: monthly
+  unit: USD/Hour
+  transform_default: yoy
+  priority: 2
+  status: MAPPED
+
+# --- US Massive Core ---
+- key: massive_inflation_cpi
+  display_name: CPI (Massive)
+  category: Inflation
+  region: US
+  source: MASSIVE
+  series_id: fed/v1/inflation|cpi
+  frequency: monthly
+  unit: Index
+  transform_default: yoy
+  priority: 1
+  status: MAPPED
+
+- key: massive_inflation_cpi_core
+  display_name: Core CPI (Massive)
+  category: Inflation
+  region: US
+  source: MASSIVE
+  series_id: fed/v1/inflation|cpi_core
+  frequency: monthly
+  unit: Index
+  transform_default: yoy
+  priority: 2
+  status: MAPPED
+
+- key: massive_inflation_cpi_yoy
+  display_name: CPI YoY (Massive)
+  category: Inflation
+  region: US
+  source: MASSIVE
+  series_id: fed/v1/inflation|cpi_year_over_year
+  frequency: monthly
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: MAPPED
+
+- key: massive_inflation_pce
+  display_name: PCE (Massive)
+  category: Inflation
+  region: US
+  source: MASSIVE
+  series_id: fed/v1/inflation|pce
+  frequency: monthly
+  unit: Index
+  transform_default: yoy
+  priority: 2
+  status: MAPPED
+
+- key: massive_inflation_pce_core
+  display_name: Core PCE (Massive)
+  category: Inflation
+  region: US
+  source: MASSIVE
+  series_id: fed/v1/inflation|pce_core
+  frequency: monthly
+  unit: Index
+  transform_default: yoy
+  priority: 2
+  status: MAPPED
+
+- key: massive_inflation_pce_yoy
+  display_name: PCE YoY (Massive)
+  category: Inflation
+  region: US
+  source: MASSIVE
+  series_id: fed/v1/inflation|pce_year_over_year
+  frequency: monthly
+  unit: Percent
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+- key: massive_ust_3m
+  display_name: UST 3M (Massive)
+  category: Rates
+  region: US
+  source: MASSIVE
+  series_id: fed/v1/treasury-yields|3m
+  frequency: daily
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: MAPPED
+
+- key: massive_ust_2y
+  display_name: UST 2Y (Massive)
+  category: Rates
+  region: US
+  source: MASSIVE
+  series_id: fed/v1/treasury-yields|2y
+  frequency: daily
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: MAPPED
+
+- key: massive_ust_10y
+  display_name: UST 10Y (Massive)
+  category: Rates
+  region: US
+  source: MASSIVE
+  series_id: fed/v1/treasury-yields|10y
+  frequency: daily
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: MAPPED
+
+- key: massive_ust_30y
+  display_name: UST 30Y (Massive)
+  category: Rates
+  region: US
+  source: MASSIVE
+  series_id: fed/v1/treasury-yields|30y
+  frequency: daily
+  unit: Percent
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+- key: massive_ust_10y_2y_spread
+  display_name: 10Y-2Y Spread (Massive)
+  category: Rates
+  region: US
+  source: MASSIVE
+  series_id: fed/v1/treasury-yields|10y-2y
+  frequency: daily
+  unit: Percent
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+- key: massive_ust_10y_3m_spread
+  display_name: 10Y-3M Spread (Massive)
+  category: Rates
+  region: US
+  source: MASSIVE
+  series_id: fed/v1/treasury-yields|10y-3m
+  frequency: daily
+  unit: Percent
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+- key: massive_unemployment_rate
+  display_name: Unemployment Rate (Massive)
+  category: Labor
+  region: US
+  source: MASSIVE
+  series_id: fed/v1/labor-market|unemployment_rate
+  frequency: monthly
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: MAPPED
+
+- key: massive_participation_rate
+  display_name: Participation Rate (Massive)
+  category: Labor
+  region: US
+  source: MASSIVE
+  series_id: fed/v1/labor-market|participation_rate
+  frequency: monthly
+  unit: Percent
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+- key: massive_avg_hourly_earnings
+  display_name: Avg Hourly Earnings (Massive)
+  category: Labor
+  region: US
+  source: MASSIVE
+  series_id: fed/v1/labor-market|average_hourly_earnings
+  frequency: monthly
+  unit: USD
+  transform_default: yoy
+  priority: 2
+  status: MAPPED
+
+- key: massive_job_openings
+  display_name: Job Openings (Massive)
+  category: Labor
+  region: US
+  source: MASSIVE
+  series_id: fed/v1/labor-market|job_openings
+  frequency: monthly
+  unit: Thousands
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+- key: massive_infl_exp_1y
+  display_name: Inflation Expectations 1Y
+  category: Inflation
+  region: US
+  source: MASSIVE
+  series_id: fed/v1/inflation-expectations|1y
+  frequency: monthly
+  unit: Percent
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+- key: massive_infl_exp_5y
+  display_name: Inflation Expectations 5Y
+  category: Inflation
+  region: US
+  source: MASSIVE
+  series_id: fed/v1/inflation-expectations|5y
+  frequency: monthly
+  unit: Percent
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+- key: massive_infl_exp_10y
+  display_name: Inflation Expectations 10Y
+  category: Inflation
+  region: US
+  source: MASSIVE
+  series_id: fed/v1/inflation-expectations|10y
+  frequency: monthly
+  unit: Percent
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+- key: us_indpro
+  display_name: Industrial Production
+  category: Growth
+  region: US
+  source: FRED
+  series_id: INDPRO
+  frequency: monthly
+  unit: Index 2017=100
+  transform_default: yoy
+  priority: 2
+  status: MAPPED
+
+- key: us_retail_sales
+  display_name: Advance Retail Sales
+  category: Growth
+  region: US
+  source: FRED
+  series_id: RSXFS
+  frequency: monthly
+  unit: Millions USD
+  transform_default: yoy
+  priority: 2
+  status: MAPPED
+
+- key: us_m2
+  display_name: M2 Money Supply
+  category: Money_Credit
+  region: US
+  source: FRED
+  series_id: M2SL
+  frequency: monthly
+  unit: Billions USD
+  transform_default: yoy
+  priority: 2
+  status: MAPPED
+
+- key: us_hy_spread
+  display_name: HY Option-Adjusted Spread
+  category: Money_Credit
+  region: US
+  source: FRED
+  series_id: BAMLH0A0HYM2
+  frequency: daily
+  unit: Percent
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+- key: us_vix
+  display_name: VIX Index
+  category: Risk_Sentiment
+  region: US
+  source: FRED
+  series_id: VIXCLS
+  frequency: daily
+  unit: Index
+  transform_default: level
+  priority: 1
+  status: MAPPED
+
+- key: us_sentiment
+  display_name: UMich Consumer Sentiment
+  category: Risk_Sentiment
+  region: US
+  source: FRED
+  series_id: UMCSENT
+  frequency: monthly
+  unit: Index
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+- key: global_dxy
+  display_name: Trade Weighted US Dollar
+  category: FX
+  region: GLOBAL
+  source: FRED
+  series_id: DTWEXBGS
+  frequency: daily
+  unit: Index 2006=100
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+- key: us_10y
+  display_name: 10-Year Treasury Yield
+  category: Rates
+  region: US
+  source: FRED
+  series_id: DGS10
+  frequency: daily
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: MAPPED
+
+- key: us_2y
+  display_name: 2-Year Treasury Yield
+  category: Rates
+  region: US
+  source: FRED
+  series_id: DGS2
+  frequency: daily
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: MAPPED
+
+# --- EU Core (From Presets) ---
+- key: eu_mro
+  display_name: ECB Main Refinancing Rate
+  category: Rates
+  region: EU
+  source: TRADING_ECONOMICS
+  series_id: Interest Rate
+  frequency: monthly
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: MAPPED
+
+
+- key: eu_mlf
+  display_name: ECB Marginal Lending Rate
+  category: Rates
+  region: EU
+  source: TRADING_ECONOMICS
+  series_id: Interest Rate
+  frequency: monthly
+  unit: Percent
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+# --- EU Core ---
+- key: eu_cpi
+  display_name: Inflation Rate
+  category: Inflation
+  region: EU
+  source: TRADING_ECONOMICS
+  series_id: Inflation Rate
+  frequency: monthly
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: TODO_MAPPING
+
+- key: eu_gdp_growth
+  display_name: GDP Growth Rate
+  category: Growth
+  region: EU
+  source: TRADING_ECONOMICS
+  series_id: GDP Growth Rate
+  frequency: quarterly
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: TODO_MAPPING
+
+- key: eu_unemployment
+  display_name: Unemployment Rate
+  category: Labor
+  region: EU
+  source: TRADING_ECONOMICS
+  series_id: Unemployment Rate
+  frequency: monthly
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: TODO_MAPPING
+
+- key: eu_rates
+  display_name: Interest Rate
+  category: Rates
+  region: EU
+  source: TRADING_ECONOMICS
+  series_id: Interest Rate
+  frequency: monthly
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: TODO_MAPPING
+
+# --- ASIA Core ---
+- key: asia_cpi
+  display_name: Inflation Rate
+  category: Inflation
+  region: ASIA
+  source: TRADING_ECONOMICS
+  series_id: Inflation Rate
+  country_scope: "China|Japan|India|South Korea"
+  frequency: monthly
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: TODO_MAPPING
+
+- key: asia_gdp
+  display_name: GDP Growth Rate
+  category: Growth
+  region: ASIA
+  source: TRADING_ECONOMICS
+  series_id: GDP Growth Rate
+  country_scope: "China|Japan|India|South Korea"
+  frequency: quarterly
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: TODO_MAPPING
+
+- key: asia_unemployment
+  display_name: Unemployment Rate
+  category: Labor
+  region: ASIA
+  source: TRADING_ECONOMICS
+  series_id: Unemployment Rate
+  country_scope: "China|Japan|India|South Korea"
+  frequency: monthly
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: TODO_MAPPING
+
+- key: asia_rates
+  display_name: Interest Rate
+  category: Rates
+  region: ASIA
+  source: TRADING_ECONOMICS
+  series_id: Interest Rate
+  country_scope: "China|Japan|India|South Korea"
+  frequency: monthly
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: TODO_MAPPING

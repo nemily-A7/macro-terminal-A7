@@ -1,0 +1,17 @@
+US:
+  label: "United States"
+  te_countries: ["United States"]
+  region_keys_in_catalog: ["US"]
+  default_country: "United States"
+
+EU:
+  label: "Euro Area"
+  te_countries: ["Euro Area", "Germany", "France", "Italy", "Spain", "Netherlands"]
+  region_keys_in_catalog: ["EU"]
+  default_country: "Euro Area"
+
+ASIA:
+  label: "Asia"
+  te_countries: ["China", "Japan", "South Korea", "India", "Singapore", "Australia"]
+  region_keys_in_catalog: ["ASIA"]
+  default_country: "China"
