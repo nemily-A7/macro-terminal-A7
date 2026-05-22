@@ -6,9 +6,25 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.egg-info/
 
 # pytest
 .pytest_cache/
+
+# DuckDB persistent cache — machine-specific, never commit
+*.duckdb
+*.duckdb.wal
+
+# Logs
+*.log
+
+# pip stray artifacts
+=*
+
+# Frontend dependencies & build output
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
 
 # VS Code / IDE
 .vscode/

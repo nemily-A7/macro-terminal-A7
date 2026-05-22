@@ -1,7 +1,250 @@
 # Macro Catalog
 # Source of Truth for all Macro Indicators
 
-# --- US Core ---
+# --- US Inflation ---
+- key: us_cpi
+  display_name: CPI
+  category: Inflation
+  region: US
+  source: FRED
+  series_id: CPIAUCSL
+  frequency: monthly
+  unit: Index 1982=100
+  transform_default: yoy
+  priority: 1
+  status: MAPPED
+
+- key: us_core_cpi
+  display_name: Core CPI
+  category: Inflation
+  region: US
+  source: FRED
+  series_id: CPILFESL
+  frequency: monthly
+  unit: Index 1982=100
+  transform_default: yoy
+  priority: 1
+  status: MAPPED
+
+- key: us_pce
+  display_name: PCE Price Index
+  category: Inflation
+  region: US
+  source: FRED
+  series_id: PCEPI
+  frequency: monthly
+  unit: Index 2012=100
+  transform_default: yoy
+  priority: 1
+  status: MAPPED
+
+- key: us_core_pce
+  display_name: Core PCE
+  category: Inflation
+  region: US
+  source: FRED
+  series_id: PCEPILFE
+  frequency: monthly
+  unit: Index 2012=100
+  transform_default: yoy
+  priority: 1
+  status: MAPPED
+
+- key: us_ppi
+  display_name: PPI All Commodities
+  category: Inflation
+  region: US
+  source: FRED
+  series_id: PPIACO
+  frequency: monthly
+  unit: Index 1982=100
+  transform_default: yoy
+  priority: 2
+  status: MAPPED
+
+- key: us_infl_exp_1y
+  display_name: Inflation Expectations 1Y
+  category: Inflation
+  region: US
+  source: FRED
+  series_id: MICH
+  frequency: monthly
+  unit: Percent
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+- key: us_infl_exp_5y
+  display_name: Inflation Expectations 5Y
+  category: Inflation
+  region: US
+  source: FRED
+  series_id: T5YIE
+  frequency: daily
+  unit: Percent
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+- key: us_infl_exp_10y
+  display_name: Inflation Expectations 10Y
+  category: Inflation
+  region: US
+  source: FRED
+  series_id: T10YIE
+  frequency: daily
+  unit: Percent
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+# --- US Rates ---
+- key: us_fed_funds
+  display_name: Fed Funds Rate
+  category: Rates
+  region: US
+  source: FRED
+  series_id: FEDFUNDS
+  frequency: monthly
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: MAPPED
+
+- key: us_3m
+  display_name: 3-Month Treasury Yield
+  category: Rates
+  region: US
+  source: FRED
+  series_id: DGS3MO
+  frequency: daily
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: MAPPED
+
+- key: us_2y
+  display_name: 2-Year Treasury Yield
+  category: Rates
+  region: US
+  source: FRED
+  series_id: DGS2
+  frequency: daily
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: MAPPED
+
+- key: us_10y
+  display_name: 10-Year Treasury Yield
+  category: Rates
+  region: US
+  source: FRED
+  series_id: DGS10
+  frequency: daily
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: MAPPED
+
+- key: us_30y
+  display_name: 30-Year Treasury Yield
+  category: Rates
+  region: US
+  source: FRED
+  series_id: DGS30
+  frequency: daily
+  unit: Percent
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+- key: us_spread_10y_2y
+  display_name: 10Y-2Y Spread
+  category: Rates
+  region: US
+  source: FRED
+  series_id: T10Y2Y
+  frequency: daily
+  unit: Percent
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+- key: us_spread_10y_3m
+  display_name: 10Y-3M Spread
+  category: Rates
+  region: US
+  source: FRED
+  series_id: T10Y3M
+  frequency: daily
+  unit: Percent
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+# --- US Labor ---
+- key: us_unrate
+  display_name: Unemployment Rate
+  category: Labor
+  region: US
+  source: FRED
+  series_id: UNRATE
+  frequency: monthly
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: MAPPED
+
+- key: us_nfp
+  display_name: Nonfarm Payrolls
+  category: Labor
+  region: US
+  source: FRED
+  series_id: PAYEMS
+  frequency: monthly
+  unit: Thousands
+  transform_default: mom
+  priority: 1
+  status: MAPPED
+
+- key: us_participation
+  display_name: Labor Force Participation Rate
+  category: Labor
+  region: US
+  source: FRED
+  series_id: CIVPART
+  frequency: monthly
+  unit: Percent
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+- key: us_job_openings
+  display_name: Job Openings (JOLTS)
+  category: Labor
+  region: US
+  source: FRED
+  series_id: JTSJOL
+  frequency: monthly
+  unit: Thousands
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+- key: us_wages
+  display_name: Avg Hourly Earnings
+  category: Labor
+  region: US
+  source: FRED
+  series_id: AHETPI
+  frequency: monthly
+  unit: USD/Hour
+  transform_default: yoy
+  priority: 2
+  status: MAPPED
+
+# --- US Growth ---
 - key: us_gdp
   display_name: Real GDP
   category: Growth
@@ -23,335 +266,6 @@
   frequency: quarterly
   unit: Billions USD
   transform_default: yoy
-  priority: 2
-  status: MAPPED
-
-- key: us_cpi
-  display_name: CPI
-  category: Inflation
-  region: US
-  source: FRED
-  series_id: CPIAUCSL
-  frequency: monthly
-  unit: Index 1982=100
-  transform_default: yoy
-  fallback_key: massive_inflation_cpi
-  priority: 1
-  status: MAPPED
-
-- key: us_pce
-  display_name: PCE Price Index
-  category: Inflation
-  region: US
-  source: FRED
-  series_id: PCEPI
-  frequency: monthly
-  unit: Index 2012=100
-  transform_default: yoy
-  fallback_key: massive_inflation_pce
-  priority: 1
-  status: MAPPED
-
-- key: us_core_pce
-  display_name: Core PCE
-  category: Inflation
-  region: US
-  source: FRED
-  series_id: PCEPILFE
-  frequency: monthly
-  unit: Index 2012=100
-  transform_default: yoy
-  fallback_key: massive_inflation_pce_core
-  priority: 1
-  status: MAPPED
-
-- key: us_ppi
-  display_name: PPI All Commodities
-  category: Inflation
-  region: US
-  source: FRED
-  series_id: PPIACO
-  frequency: monthly
-  unit: Index 1982=100
-  transform_default: yoy
-  priority: 2
-  status: MAPPED
-
-- key: us_fed_funds
-  display_name: Fed Funds Rate
-  category: Rates
-  region: US
-  source: FRED
-  series_id: FEDFUNDS
-  frequency: monthly
-  unit: Percent
-  transform_default: level
-  priority: 1
-  status: MAPPED
-
-- key: us_unrate
-  display_name: Unemployment Rate
-  category: Labor
-  region: US
-  source: FRED
-  series_id: UNRATE
-  frequency: monthly
-  unit: Percent
-  transform_default: level
-  fallback_key: massive_unemployment_rate
-  priority: 1
-  status: MAPPED
-
-- key: us_nfp
-  display_name: Total Nonfarm Payrolls
-  category: Labor
-  region: US
-  source: FRED
-  series_id: PAYEMS
-  frequency: monthly
-  unit: Thousands
-  transform_default: mom
-  priority: 1
-  status: MAPPED
-
-- key: us_wages
-  display_name: Avg Hourly Earnings
-  category: Labor
-  region: US
-  source: FRED
-  series_id: AHETPI
-  frequency: monthly
-  unit: USD/Hour
-  transform_default: yoy
-  priority: 2
-  status: MAPPED
-
-# --- US Massive Core ---
-- key: massive_inflation_cpi
-  display_name: CPI (Massive)
-  category: Inflation
-  region: US
-  source: MASSIVE
-  series_id: fed/v1/inflation|cpi
-  frequency: monthly
-  unit: Index
-  transform_default: yoy
-  priority: 1
-  status: MAPPED
-
-- key: massive_inflation_cpi_core
-  display_name: Core CPI (Massive)
-  category: Inflation
-  region: US
-  source: MASSIVE
-  series_id: fed/v1/inflation|cpi_core
-  frequency: monthly
-  unit: Index
-  transform_default: yoy
-  priority: 2
-  status: MAPPED
-
-- key: massive_inflation_cpi_yoy
-  display_name: CPI YoY (Massive)
-  category: Inflation
-  region: US
-  source: MASSIVE
-  series_id: fed/v1/inflation|cpi_year_over_year
-  frequency: monthly
-  unit: Percent
-  transform_default: level
-  priority: 1
-  status: MAPPED
-
-- key: massive_inflation_pce
-  display_name: PCE (Massive)
-  category: Inflation
-  region: US
-  source: MASSIVE
-  series_id: fed/v1/inflation|pce
-  frequency: monthly
-  unit: Index
-  transform_default: yoy
-  priority: 2
-  status: MAPPED
-
-- key: massive_inflation_pce_core
-  display_name: Core PCE (Massive)
-  category: Inflation
-  region: US
-  source: MASSIVE
-  series_id: fed/v1/inflation|pce_core
-  frequency: monthly
-  unit: Index
-  transform_default: yoy
-  priority: 2
-  status: MAPPED
-
-- key: massive_inflation_pce_yoy
-  display_name: PCE YoY (Massive)
-  category: Inflation
-  region: US
-  source: MASSIVE
-  series_id: fed/v1/inflation|pce_year_over_year
-  frequency: monthly
-  unit: Percent
-  transform_default: level
-  priority: 2
-  status: MAPPED
-
-- key: massive_ust_3m
-  display_name: UST 3M (Massive)
-  category: Rates
-  region: US
-  source: MASSIVE
-  series_id: fed/v1/treasury-yields|3m
-  frequency: daily
-  unit: Percent
-  transform_default: level
-  priority: 1
-  status: MAPPED
-
-- key: massive_ust_2y
-  display_name: UST 2Y (Massive)
-  category: Rates
-  region: US
-  source: MASSIVE
-  series_id: fed/v1/treasury-yields|2y
-  frequency: daily
-  unit: Percent
-  transform_default: level
-  priority: 1
-  status: MAPPED
-
-- key: massive_ust_10y
-  display_name: UST 10Y (Massive)
-  category: Rates
-  region: US
-  source: MASSIVE
-  series_id: fed/v1/treasury-yields|10y
-  frequency: daily
-  unit: Percent
-  transform_default: level
-  priority: 1
-  status: MAPPED
-
-- key: massive_ust_30y
-  display_name: UST 30Y (Massive)
-  category: Rates
-  region: US
-  source: MASSIVE
-  series_id: fed/v1/treasury-yields|30y
-  frequency: daily
-  unit: Percent
-  transform_default: level
-  priority: 2
-  status: MAPPED
-
-- key: massive_ust_10y_2y_spread
-  display_name: 10Y-2Y Spread (Massive)
-  category: Rates
-  region: US
-  source: MASSIVE
-  series_id: fed/v1/treasury-yields|10y-2y
-  frequency: daily
-  unit: Percent
-  transform_default: level
-  priority: 2
-  status: MAPPED
-
-- key: massive_ust_10y_3m_spread
-  display_name: 10Y-3M Spread (Massive)
-  category: Rates
-  region: US
-  source: MASSIVE
-  series_id: fed/v1/treasury-yields|10y-3m
-  frequency: daily
-  unit: Percent
-  transform_default: level
-  priority: 2
-  status: MAPPED
-
-- key: massive_unemployment_rate
-  display_name: Unemployment Rate (Massive)
-  category: Labor
-  region: US
-  source: MASSIVE
-  series_id: fed/v1/labor-market|unemployment_rate
-  frequency: monthly
-  unit: Percent
-  transform_default: level
-  priority: 1
-  status: MAPPED
-
-- key: massive_participation_rate
-  display_name: Participation Rate (Massive)
-  category: Labor
-  region: US
-  source: MASSIVE
-  series_id: fed/v1/labor-market|participation_rate
-  frequency: monthly
-  unit: Percent
-  transform_default: level
-  priority: 2
-  status: MAPPED
-
-- key: massive_avg_hourly_earnings
-  display_name: Avg Hourly Earnings (Massive)
-  category: Labor
-  region: US
-  source: MASSIVE
-  series_id: fed/v1/labor-market|average_hourly_earnings
-  frequency: monthly
-  unit: USD
-  transform_default: yoy
-  priority: 2
-  status: MAPPED
-
-- key: massive_job_openings
-  display_name: Job Openings (Massive)
-  category: Labor
-  region: US
-  source: MASSIVE
-  series_id: fed/v1/labor-market|job_openings
-  frequency: monthly
-  unit: Thousands
-  transform_default: level
-  priority: 2
-  status: MAPPED
-
-- key: massive_infl_exp_1y
-  display_name: Inflation Expectations 1Y
-  category: Inflation
-  region: US
-  source: MASSIVE
-  series_id: fed/v1/inflation-expectations|1y
-  frequency: monthly
-  unit: Percent
-  transform_default: level
-  priority: 2
-  status: MAPPED
-
-- key: massive_infl_exp_5y
-  display_name: Inflation Expectations 5Y
-  category: Inflation
-  region: US
-  source: MASSIVE
-  series_id: fed/v1/inflation-expectations|5y
-  frequency: monthly
-  unit: Percent
-  transform_default: level
-  priority: 2
-  status: MAPPED
-
-- key: massive_infl_exp_10y
-  display_name: Inflation Expectations 10Y
-  category: Inflation
-  region: US
-  source: MASSIVE
-  series_id: fed/v1/inflation-expectations|10y
-  frequency: monthly
-  unit: Percent
-  transform_default: level
   priority: 2
   status: MAPPED
 
@@ -379,6 +293,7 @@
   priority: 2
   status: MAPPED
 
+# --- US Money & Credit ---
 - key: us_m2
   display_name: M2 Money Supply
   category: Money_Credit
@@ -403,6 +318,7 @@
   priority: 2
   status: MAPPED
 
+# --- US Risk & Sentiment ---
 - key: us_vix
   display_name: VIX Index
   category: Risk_Sentiment
@@ -427,6 +343,7 @@
   priority: 2
   status: MAPPED
 
+# --- Global FX ---
 - key: global_dxy
   display_name: Trade Weighted US Dollar
   category: FX
@@ -439,154 +356,974 @@
   priority: 2
   status: MAPPED
 
-- key: us_10y
-  display_name: 10-Year Treasury Yield
-  category: Rates
-  region: US
+# =====================================================
+# --- Global Markets (asset prices, FX, commodities) ---
+# =====================================================
+
+# Equities
+- key: market_sp500
+  display_name: S&P 500
+  category: Markets
+  region: GLOBAL
   source: FRED
-  series_id: DGS10
+  series_id: SP500
   frequency: daily
-  unit: Percent
+  unit: Index
   transform_default: level
+  asset_class: equity
+  market_zone: US
   priority: 1
   status: MAPPED
 
-- key: us_2y
-  display_name: 2-Year Treasury Yield
-  category: Rates
-  region: US
+- key: market_nasdaq
+  display_name: NASDAQ
+  category: Markets
+  region: GLOBAL
   source: FRED
-  series_id: DGS2
+  series_id: NASDAQCOM
   frequency: daily
-  unit: Percent
+  unit: Index
   transform_default: level
+  asset_class: equity
+  market_zone: US
   priority: 1
   status: MAPPED
 
-# --- EU Core (From Presets) ---
-- key: eu_mro
-  display_name: ECB Main Refinancing Rate
-  category: Rates
+- key: market_djia
+  display_name: Dow Jones
+  category: Markets
+  region: GLOBAL
+  source: FRED
+  series_id: DJIA
+  frequency: daily
+  unit: Index
+  transform_default: level
+  asset_class: equity
+  market_zone: US
+  priority: 2
+  status: MAPPED
+
+# FX
+- key: market_eurusd
+  display_name: EUR/USD
+  category: Markets
+  region: GLOBAL
+  source: FRED
+  series_id: DEXUSEU
+  frequency: daily
+  unit: USD
+  transform_default: level
+  asset_class: fx
+  priority: 1
+  status: MAPPED
+
+- key: market_usdjpy
+  display_name: USD/JPY
+  category: Markets
+  region: GLOBAL
+  source: FRED
+  series_id: DEXJPUS
+  frequency: daily
+  unit: JPY
+  transform_default: level
+  asset_class: fx
+  priority: 1
+  status: MAPPED
+
+- key: market_gbpusd
+  display_name: GBP/USD
+  category: Markets
+  region: GLOBAL
+  source: FRED
+  series_id: DEXUSUK
+  frequency: daily
+  unit: USD
+  transform_default: level
+  asset_class: fx
+  priority: 1
+  status: MAPPED
+
+- key: market_audusd
+  display_name: AUD/USD
+  category: Markets
+  region: GLOBAL
+  source: FRED
+  series_id: DEXUSAL
+  frequency: daily
+  unit: USD
+  transform_default: level
+  asset_class: fx
+  priority: 2
+  status: MAPPED
+
+- key: market_usdcny
+  display_name: USD/CNY
+  category: Markets
+  region: GLOBAL
+  source: FRED
+  series_id: DEXCHUS
+  frequency: daily
+  unit: CNY
+  transform_default: level
+  asset_class: fx
+  priority: 2
+  status: MAPPED
+
+# Commodities
+- key: market_wti
+  display_name: WTI Crude
+  category: Markets
+  region: GLOBAL
+  source: FRED
+  series_id: DCOILWTICO
+  frequency: daily
+  unit: USD/bbl
+  transform_default: level
+  asset_class: commodity
+  priority: 1
+  status: MAPPED
+
+- key: market_brent
+  display_name: Brent Crude
+  category: Markets
+  region: GLOBAL
+  source: FRED
+  series_id: DCOILBRENTEU
+  frequency: daily
+  unit: USD/bbl
+  transform_default: level
+  asset_class: commodity
+  priority: 1
+  status: MAPPED
+
+- key: market_natgas
+  display_name: Natural Gas
+  category: Markets
+  region: GLOBAL
+  source: FRED
+  series_id: DHHNGSP
+  frequency: daily
+  unit: USD/MMBtu
+  transform_default: level
+  asset_class: commodity
+  priority: 2
+  status: MAPPED
+
+# Crypto
+- key: market_btc
+  display_name: Bitcoin
+  category: Markets
+  region: GLOBAL
+  source: FRED
+  series_id: CBBTCUSD
+  frequency: daily
+  unit: USD
+  transform_default: level
+  asset_class: crypto
+  priority: 1
+  status: MAPPED
+
+# --- EU Inflation ---
+- key: eu_cpi
+  display_name: HICP Inflation (YoY)
+  category: Inflation
   region: EU
-  source: TRADING_ECONOMICS
-  series_id: Interest Rate
+  source: ECB_SDMX
+  series_id: ICP/M.U2.N.000000.4.ANR
+  country_series_map:
+    Euro Area: ICP/M.U2.N.000000.4.ANR
+    Austria: ICP/M.AT.N.000000.4.ANR
+    Belgium: ICP/M.BE.N.000000.4.ANR
+    Croatia: ICP/M.HR.N.000000.4.ANR
+    Cyprus: ICP/M.CY.N.000000.4.ANR
+    Estonia: ICP/M.EE.N.000000.4.ANR
+    Finland: ICP/M.FI.N.000000.4.ANR
+    France: ICP/M.FR.N.000000.4.ANR
+    Germany: ICP/M.DE.N.000000.4.ANR
+    Greece: ICP/M.GR.N.000000.4.ANR
+    Ireland: ICP/M.IE.N.000000.4.ANR
+    Italy: ICP/M.IT.N.000000.4.ANR
+    Latvia: ICP/M.LV.N.000000.4.ANR
+    Lithuania: ICP/M.LT.N.000000.4.ANR
+    Luxembourg: ICP/M.LU.N.000000.4.ANR
+    Malta: ICP/M.MT.N.000000.4.ANR
+    Netherlands: ICP/M.NL.N.000000.4.ANR
+    Portugal: ICP/M.PT.N.000000.4.ANR
+    Slovakia: ICP/M.SK.N.000000.4.ANR
+    Slovenia: ICP/M.SI.N.000000.4.ANR
+    Spain: ICP/M.ES.N.000000.4.ANR
   frequency: monthly
   unit: Percent
   transform_default: level
   priority: 1
   status: MAPPED
 
-
-- key: eu_mlf
-  display_name: ECB Marginal Lending Rate
-  category: Rates
+- key: eu_core_cpi
+  display_name: Core HICP (YoY)
+  category: Inflation
   region: EU
-  source: TRADING_ECONOMICS
-  series_id: Interest Rate
+  source: ECB_SDMX
+  series_id: ICP/M.U2.N.XEF000.4.ANR
+  country_series_map:
+    Euro Area: ICP/M.U2.N.XEF000.4.ANR
+    Austria: ICP/M.AT.N.XEF000.4.ANR
+    Belgium: ICP/M.BE.N.XEF000.4.ANR
+    Croatia: ICP/M.HR.N.XEF000.4.ANR
+    Cyprus: ICP/M.CY.N.XEF000.4.ANR
+    Estonia: ICP/M.EE.N.XEF000.4.ANR
+    Finland: ICP/M.FI.N.XEF000.4.ANR
+    France: ICP/M.FR.N.XEF000.4.ANR
+    Germany: ICP/M.DE.N.XEF000.4.ANR
+    Greece: ICP/M.GR.N.XEF000.4.ANR
+    Ireland: ICP/M.IE.N.XEF000.4.ANR
+    Italy: ICP/M.IT.N.XEF000.4.ANR
+    Latvia: ICP/M.LV.N.XEF000.4.ANR
+    Lithuania: ICP/M.LT.N.XEF000.4.ANR
+    Luxembourg: ICP/M.LU.N.XEF000.4.ANR
+    Malta: ICP/M.MT.N.XEF000.4.ANR
+    Netherlands: ICP/M.NL.N.XEF000.4.ANR
+    Portugal: ICP/M.PT.N.XEF000.4.ANR
+    Slovakia: ICP/M.SK.N.XEF000.4.ANR
+    Slovenia: ICP/M.SI.N.XEF000.4.ANR
+    Spain: ICP/M.ES.N.XEF000.4.ANR
   frequency: monthly
   unit: Percent
   transform_default: level
   priority: 2
   status: MAPPED
 
-# --- EU Core ---
-- key: eu_cpi
-  display_name: Inflation Rate
-  category: Inflation
+# --- EU Rates ---
+- key: eu_mro
+  display_name: ECB Policy Rate
+  category: Rates
   region: EU
-  source: TRADING_ECONOMICS
-  series_id: Inflation Rate
+  source: FRED
+  series_id: ECBMRRFR
+  frequency: daily
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: MAPPED
+
+- key: eu_dfr
+  display_name: ECB Deposit Rate
+  category: Rates
+  region: EU
+  source: FRED
+  series_id: ECBDFR
+  frequency: daily
+  unit: Percent
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+- key: eu_10y_yield
+  display_name: 10Y Government Bond Yield
+  category: Rates
+  region: EU
+  source: FRED
+  series_id: IRLTLT01EZM156N
+  country_series_map:
+    Euro Area: IRLTLT01EZM156N
+    Germany: IRLTLT01DEM156N
+    France: IRLTLT01FRM156N
+    Italy: IRLTLT01ITM156N
+    Spain: IRLTLT01ESM156N
+    Netherlands: IRLTLT01NLM156N
   frequency: monthly
   unit: Percent
   transform_default: level
   priority: 1
-  status: TODO_MAPPING
+  status: MAPPED
 
-- key: eu_gdp_growth
-  display_name: GDP Growth Rate
-  category: Growth
+# ECB Yield Curve — daily (ECB Statistical Data Warehouse)
+- key: eu_bund_10y
+  display_name: Bund 10Y
+  category: Rates
   region: EU
-  source: TRADING_ECONOMICS
-  series_id: GDP Growth Rate
-  frequency: quarterly
+  source: ECB_SDMX
+  series_id: YC/B.U2.EUR.4F.G_N_A.SV_C_YM.SR_10Y
+  frequency: daily
   unit: Percent
   transform_default: level
   priority: 1
-  status: TODO_MAPPING
+  status: MAPPED
 
+- key: eu_schatz_2y
+  display_name: Schatz 2Y
+  category: Rates
+  region: EU
+  source: ECB_SDMX
+  series_id: YC/B.U2.EUR.4F.G_N_A.SV_C_YM.SR_2Y
+  frequency: daily
+  unit: Percent
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+- key: eu_all_sov_10y
+  display_name: EA All Sovereigns 10Y
+  category: Rates
+  region: EU
+  source: ECB_SDMX
+  series_id: YC/B.U2.EUR.4F.G_N_C.SV_C_YM.SR_10Y
+  frequency: daily
+  unit: Percent
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+# EU FX — historical FRED daily, live via Twelve Data (WebSocket override)
+- key: eu_eurusd
+  display_name: EUR/USD
+  category: Rates
+  region: EU
+  source: FRED
+  series_id: DEXUSEU
+  frequency: daily
+  unit: USD
+  transform_default: level
+  priority: 3
+  status: MAPPED
+
+- key: eu_eurgbp
+  display_name: EUR/GBP
+  category: Rates
+  region: EU
+  source: LIVE_ONLY
+  series_id: ""
+  frequency: daily
+  unit: GBP
+  transform_default: level
+  priority: 3
+  status: MAPPED
+
+# --- EU Labor ---
 - key: eu_unemployment
   display_name: Unemployment Rate
   category: Labor
   region: EU
-  source: TRADING_ECONOMICS
-  series_id: Unemployment Rate
+  source: EUROSTAT
+  series_id: une_rt_m
+  eurostat_filters:
+    s_adj: SA
+    age: TOTAL
+    sex: T
+    unit: PC_ACT
+  eurostat_geo_map:
+    Euro Area: EA21
+    Austria: AT
+    Belgium: BE
+    Croatia: HR
+    Cyprus: CY
+    Estonia: EE
+    Finland: FI
+    France: FR
+    Germany: DE
+    Greece: EL
+    Ireland: IE
+    Italy: IT
+    Latvia: LV
+    Lithuania: LT
+    Luxembourg: LU
+    Malta: MT
+    Netherlands: NL
+    Portugal: PT
+    Slovakia: SK
+    Slovenia: SI
+    Spain: ES
   frequency: monthly
   unit: Percent
   transform_default: level
   priority: 1
-  status: TODO_MAPPING
+  status: MAPPED
 
-- key: eu_rates
-  display_name: Interest Rate
-  category: Rates
+# --- EU Growth ---
+- key: eu_gdp_growth
+  display_name: GDP Growth Rate
+  category: Growth
   region: EU
-  source: TRADING_ECONOMICS
-  series_id: Interest Rate
-  frequency: monthly
+  source: WORLD_BANK
+  series_id: NY.GDP.MKTP.KD.ZG
+  frequency: annual
   unit: Percent
   transform_default: level
   priority: 1
-  status: TODO_MAPPING
+  status: MAPPED
 
-# --- ASIA Core ---
+# --- EU Money & Credit ---
+- key: eu_m3
+  display_name: M3 Money Supply (YoY)
+  category: Money_Credit
+  region: EU
+  source: FRED
+  series_id: MABMM301EZM657S
+  frequency: monthly
+  unit: Percent
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+- key: eu_hy_spread
+  display_name: EU HY OAS Spread
+  category: Money_Credit
+  region: EU
+  source: FRED
+  series_id: BAMLHE00EHYIOAS
+  frequency: daily
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: MAPPED
+
+# --- EU Risk & Sentiment ---
+- key: eu_consumer_confidence
+  display_name: Consumer Confidence
+  category: Risk_Sentiment
+  region: EU
+  source: FRED
+  series_id: CSCICP02EZM460S
+  country_series_map:
+    Euro Area: CSCICP02EZM460S
+    Austria: CSCICP02ATM460S
+    Belgium: CSCICP02BEM460S
+    Finland: CSCICP02FIM460S
+    France: CSCICP02FRM460S
+    Germany: CSCICP02DEM460S
+    Greece: CSCICP02GRM460S
+    Ireland: CSCICP02IEM460S
+    Italy: CSCICP02ITM460S
+    Netherlands: CSCICP02NLM460S
+    Portugal: CSCICP02PTM460S
+    Spain: CSCICP02ESM460S
+  frequency: monthly
+  unit: Index
+  transform_default: level
+  priority: 1
+  status: MAPPED
+
+- key: eu_business_confidence
+  display_name: Business Confidence
+  category: Risk_Sentiment
+  region: EU
+  source: FRED
+  series_id: BSCICP02EZM460S
+  country_series_map:
+    Euro Area: BSCICP02EZM460S
+    Austria: BSCICP02ATM460S
+    Belgium: BSCICP02BEM460S
+    Finland: BSCICP02FIM460S
+    France: BSCICP02FRM460S
+    Germany: BSCICP02DEM460S
+    Greece: BSCICP02GRM460S
+    Ireland: BSCICP02IEM460S
+    Italy: BSCICP02ITM460S
+    Netherlands: BSCICP02NLM460S
+    Portugal: BSCICP02PTM460S
+    Spain: BSCICP02ESM460S
+  frequency: monthly
+  unit: Index
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+# --- ASIA Inflation ---
 - key: asia_cpi
-  display_name: Inflation Rate
+  display_name: Inflation Rate (YoY)
   category: Inflation
   region: ASIA
-  source: TRADING_ECONOMICS
-  series_id: Inflation Rate
-  country_scope: "China|Japan|India|South Korea"
-  frequency: monthly
+  source: WORLD_BANK
+  series_id: FP.CPI.TOTL.ZG
+  frequency: annual
   unit: Percent
   transform_default: level
   priority: 1
-  status: TODO_MAPPING
+  status: MAPPED
 
+# --- ASIA Growth ---
 - key: asia_gdp
   display_name: GDP Growth Rate
   category: Growth
   region: ASIA
-  source: TRADING_ECONOMICS
-  series_id: GDP Growth Rate
-  country_scope: "China|Japan|India|South Korea"
-  frequency: quarterly
+  source: WORLD_BANK
+  series_id: NY.GDP.MKTP.KD.ZG
+  frequency: annual
   unit: Percent
   transform_default: level
   priority: 1
-  status: TODO_MAPPING
+  status: MAPPED
 
+# --- ASIA Labor ---
+# FRED monthly ILO unemployment (JP/KR/AU up to 2026); World Bank annual fallback for CN/IN
 - key: asia_unemployment
   display_name: Unemployment Rate
   category: Labor
   region: ASIA
-  source: TRADING_ECONOMICS
-  series_id: Unemployment Rate
-  country_scope: "China|Japan|India|South Korea"
+  source: FRED
+  series_id: LRHUTTTTJPM156S
+  country_series_map:
+    Japan: LRHUTTTTJPM156S
+    South Korea: LRHUTTTTSKM156S
+    Australia: LRHUTTTTAUM156S
   frequency: monthly
   unit: Percent
   transform_default: level
   priority: 1
-  status: TODO_MAPPING
+  status: MAPPED
 
+# --- ASIA Rates ---
+# Short-term policy rates via FRED (monthly, all countries available)
 - key: asia_rates
-  display_name: Interest Rate
+  display_name: Short-term Interest Rate
   category: Rates
   region: ASIA
-  source: TRADING_ECONOMICS
-  series_id: Interest Rate
-  country_scope: "China|Japan|India|South Korea"
+  source: FRED
+  series_id: IRSTCI01JPM156N
+  country_series_map:
+    Japan: IRSTCI01JPM156N
+    South Korea: IRSTCI01KRM156N
+    Australia: IRSTCI01AUM156N
+    India: IRSTCI01INM156N
+    China: IRSTCI01CNM156N
   frequency: monthly
   unit: Percent
   transform_default: level
   priority: 1
-  status: TODO_MAPPING
+  status: MAPPED
+
+# 10-Year government bond yields via FRED (monthly, JP/KR/AU)
+- key: asia_10y
+  display_name: 10Y Government Bond Yield
+  category: Rates
+  region: ASIA
+  source: FRED
+  series_id: IRLTLT01JPM156N
+  country_series_map:
+    Japan: IRLTLT01JPM156N
+    South Korea: IRLTLT01KRM156N
+    Australia: IRLTLT01AUM156N
+  frequency: monthly
+  unit: Percent
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+# --- ASIA Money & Credit ---
+- key: asia_m2
+  display_name: Broad Money (% of GDP)
+  category: Money_Credit
+  region: ASIA
+  source: WORLD_BANK
+  series_id: FM.LBL.BMNY.GD.ZS
+  frequency: annual
+  unit: Percent
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+# --- ASIA Risk & Sentiment ---
+- key: asia_current_account
+  display_name: Current Account (% GDP)
+  category: Risk_Sentiment
+  region: ASIA
+  source: WORLD_BANK
+  series_id: BN.CAB.XOKA.GD.ZS
+  frequency: annual
+  unit: Percent
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+# OECD Composite Leading Indicators via FRED (monthly, all ASIA countries)
+- key: asia_cli
+  display_name: Composite Leading Indicator
+  category: Risk_Sentiment
+  region: ASIA
+  source: FRED
+  series_id: JPNLOLITONOSTSAM
+  country_series_map:
+    Japan: JPNLOLITONOSTSAM
+    South Korea: KORLOLITONOSTSAM
+    Australia: AUSLOLITONOSTSAM
+    China: CHNLOLITONOSTSAM
+    India: INDLOLITONOSTSAM
+  frequency: monthly
+  unit: Index
+  transform_default: level
+  priority: 1
+  status: MAPPED
+
+# --- EU Growth additions ---
+- key: eu_cli
+  display_name: Composite Leading Indicator
+  category: Growth
+  region: EU
+  source: FRED
+  series_id: EA19LOLITONOSTSAM
+  country_series_map:
+    Euro Area: EA19LOLITONOSTSAM
+    Germany: DEULOLITONOSTSAM
+    France: FRALOLITONOSTSAM
+    Italy: ITALOLITONOSTSAM
+    Spain: ESPLOLITONOSTSAM
+  frequency: monthly
+  unit: Index
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+# ======================================================
+# --- US Growth additions ---
+# ======================================================
+
+- key: us_housing_starts
+  display_name: Housing Starts
+  category: Growth
+  region: US
+  source: FRED
+  series_id: HOUST
+  frequency: monthly
+  unit: Thousands
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+- key: us_building_permits
+  display_name: Building Permits
+  category: Growth
+  region: US
+  source: FRED
+  series_id: PERMIT
+  frequency: monthly
+  unit: Thousands
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+- key: us_trade_balance
+  display_name: Trade Balance
+  category: Growth
+  region: US
+  source: FRED
+  series_id: BOPGSTB
+  frequency: monthly
+  unit: Millions USD
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+# --- US Geopolitical Risk ---
+- key: us_gpr
+  display_name: Geopolitical Risk Index
+  category: Risk_Sentiment
+  region: US
+  source: GPR
+  series_id: GPRC_USA
+  frequency: monthly
+  unit: Index
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+# ======================================================
+# --- EU Growth additions ---
+# ======================================================
+
+- key: eu_gdp_qoq
+  display_name: GDP Growth QoQ
+  category: Growth
+  region: EU
+  source: EUROSTAT
+  series_id: namq_10_gdp
+  eurostat_filters:
+    unit: CLV_PCH_PRE
+    s_adj: SCA
+    na_item: B1GQ
+  eurostat_geo_map:
+    Euro Area: EA20
+    Germany: DE
+    France: FR
+    Italy: IT
+    Spain: ES
+    Netherlands: NL
+    Belgium: BE
+    Austria: AT
+    Portugal: PT
+    Finland: FI
+    Ireland: IE
+    Greece: EL
+    Slovakia: SK
+    Slovenia: SI
+    Lithuania: LT
+    Latvia: LV
+    Estonia: EE
+    Croatia: HR
+    Cyprus: CY
+    Luxembourg: LU
+    Malta: MT
+  frequency: quarterly
+  unit: Percent
+  transform_default: level
+  priority: 1
+  status: MAPPED
+
+- key: eu_indpro
+  display_name: Industrial Production (YoY)
+  category: Growth
+  region: EU
+  source: EUROSTAT
+  series_id: sts_inpr_m
+  eurostat_filters:
+    nace_r2: B-D
+    s_adj: SCA
+    unit: I21
+  eurostat_geo_map:
+    Euro Area: EA20
+    Germany: DE
+    France: FR
+    Italy: IT
+    Spain: ES
+    Netherlands: NL
+    Belgium: BE
+    Austria: AT
+    Portugal: PT
+    Finland: FI
+    Ireland: IE
+    Greece: EL
+  frequency: monthly
+  unit: Index 2021=100
+  transform_default: yoy
+  priority: 2
+  status: MAPPED
+
+- key: eu_retail_sales
+  display_name: Retail Sales (YoY)
+  category: Growth
+  region: EU
+  source: EUROSTAT
+  series_id: sts_trtu_m
+  eurostat_filters:
+    nace_r2: G47
+    s_adj: SCA
+    unit: I21
+  eurostat_geo_map:
+    Euro Area: EA20
+    Germany: DE
+    France: FR
+    Italy: IT
+    Spain: ES
+    Netherlands: NL
+    Belgium: BE
+    Austria: AT
+    Portugal: PT
+    Finland: FI
+    Ireland: IE
+    Greece: EL
+  frequency: monthly
+  unit: Index 2021=100
+  transform_default: yoy
+  priority: 2
+  status: MAPPED
+
+# --- EU Geopolitical Risk ---
+- key: eu_gpr
+  display_name: Geopolitical Risk Index
+  category: Risk_Sentiment
+  region: EU
+  source: GPR
+  series_id: GPRC_DEU
+  country_series_map:
+    Euro Area: GPRC_DEU
+    Germany: GPRC_DEU
+    France: GPRC_FRA
+    Italy: GPRC_ITA
+    Spain: GPRC_ESP
+  frequency: monthly
+  unit: Index
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+# --- EU Equity Markets (live via Finnhub, no FRED historical) ---
+- key: market_eurostoxx
+  display_name: EuroStoxx 50
+  category: Markets
+  region: GLOBAL
+  source: LIVE_ONLY
+  series_id: ""
+  frequency: daily
+  unit: Index
+  transform_default: level
+  asset_class: equity
+  market_zone: EU
+  priority: 2
+  status: MAPPED
+
+- key: market_dax
+  display_name: DAX
+  category: Markets
+  region: GLOBAL
+  source: LIVE_ONLY
+  series_id: ""
+  frequency: daily
+  unit: Index
+  transform_default: level
+  asset_class: equity
+  market_zone: EU
+  priority: 2
+  status: MAPPED
+
+- key: market_cac40
+  display_name: CAC 40
+  category: Markets
+  region: GLOBAL
+  source: LIVE_ONLY
+  series_id: ""
+  frequency: daily
+  unit: Index
+  transform_default: level
+  asset_class: equity
+  market_zone: EU
+  priority: 3
+  status: MAPPED
+
+# ======================================================
+# --- ASIA Growth & Inflation additions ---
+# ======================================================
+
+# Monthly CPI YoY — OECD MEI series via FRED (index level, yoy transform)
+- key: asia_cpi_monthly
+  display_name: Inflation Rate (YoY, Monthly)
+  category: Inflation
+  region: ASIA
+  source: FRED
+  series_id: CPALTT01JPM657N
+  country_series_map:
+    Japan: CPALTT01JPM657N
+    South Korea: CPALTT01KRM657N
+    Australia: CPALTT01AUM657N
+    India: CPALTT01INM657N
+    China: CPALTT01CNM657N
+  frequency: monthly
+  unit: Percent
+  transform_default: yoy
+  priority: 1
+  status: MAPPED
+
+# Industrial Production — OECD MEI series via FRED
+- key: asia_indpro
+  display_name: Industrial Production (YoY)
+  category: Growth
+  region: ASIA
+  source: FRED
+  series_id: JPNPROINDMISMEI
+  country_series_map:
+    Japan: JPNPROINDMISMEI
+    South Korea: KORPROINDMISMEI
+    Australia: AUSPROINDMISMEI
+    China: CHNPROINDMISMEI
+    India: INDPROINDMISMEI
+  frequency: monthly
+  unit: Index 2015=100
+  transform_default: yoy
+  priority: 2
+  status: MAPPED
+
+# --- ASIA Geopolitical Risk ---
+- key: asia_gpr
+  display_name: Geopolitical Risk Index
+  category: Risk_Sentiment
+  region: ASIA
+  source: GPR
+  series_id: GPRC_CHN
+  country_series_map:
+    China: GPRC_CHN
+    Japan: GPRC_JPN
+    South Korea: GPRC_KOR
+    Australia: GPRC_AUS
+    India: GPRC_IND
+  frequency: monthly
+  unit: Index
+  transform_default: level
+  priority: 2
+  status: MAPPED
+
+# --- ASIA Equity Markets ---
+# Nikkei 225 — FRED historical available, Finnhub for live
+- key: market_nikkei
+  display_name: Nikkei 225
+  category: Markets
+  region: GLOBAL
+  source: FRED
+  series_id: NIKKEI225
+  frequency: daily
+  unit: Index
+  transform_default: level
+  asset_class: equity
+  market_zone: ASIA
+  priority: 2
+  status: MAPPED
+
+# Hang Seng — live only via Finnhub
+- key: market_hangseng
+  display_name: Hang Seng
+  category: Markets
+  region: GLOBAL
+  source: LIVE_ONLY
+  series_id: ""
+  frequency: daily
+  unit: Index
+  transform_default: level
+  asset_class: equity
+  market_zone: ASIA
+  priority: 2
+  status: MAPPED
+
+# KOSPI — live only via Finnhub
+- key: market_kospi
+  display_name: KOSPI
+  category: Markets
+  region: GLOBAL
+  source: LIVE_ONLY
+  series_id: ""
+  frequency: daily
+  unit: Index
+  transform_default: level
+  asset_class: equity
+  market_zone: ASIA
+  priority: 3
+  status: MAPPED
+
+# ASX 200 — live only via Finnhub
+- key: market_asx200
+  display_name: ASX 200
+  category: Markets
+  region: GLOBAL
+  source: LIVE_ONLY
+  series_id: ""
+  frequency: daily
+  unit: Index
+  transform_default: level
+  asset_class: equity
+  market_zone: ASIA
+  priority: 3
+  status: MAPPED
+
+# ======================================================
+# --- Global Commodities additions ---
+# ======================================================
+
+# Gold — London AM Fix via FRED (USD/troy oz)
+- key: market_gold
+  display_name: Gold
+  category: Markets
+  region: GLOBAL
+  source: FRED
+  series_id: GOLDAMGBD228NLBM
+  frequency: daily
+  unit: USD/oz
+  transform_default: level
+  asset_class: commodity
+  market_zone: GLOBAL
+  priority: 1
+  status: MAPPED

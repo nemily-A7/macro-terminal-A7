@@ -6,7 +6,28 @@ US:
 
 EU:
   label: "Euro Area"
-  te_countries: ["Euro Area", "Germany", "France", "Italy", "Spain", "Netherlands"]
+  te_countries:
+    - "Euro Area"
+    - "Germany"
+    - "France"
+    - "Italy"
+    - "Spain"
+    - "Netherlands"
+    - "Austria"
+    - "Belgium"
+    - "Croatia"
+    - "Cyprus"
+    - "Estonia"
+    - "Finland"
+    - "Greece"
+    - "Ireland"
+    - "Latvia"
+    - "Lithuania"
+    - "Luxembourg"
+    - "Malta"
+    - "Portugal"
+    - "Slovakia"
+    - "Slovenia"
   region_keys_in_catalog: ["EU"]
   default_country: "Euro Area"
 

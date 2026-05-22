@@ -65,10 +65,9 @@ def render_zone_tab(zone_key: str):
     # Separate metrics by category for clarity? Or just flow
     cols = st.columns(4)
     
-    # Priority 1 items
+    # Priority 1 items — sort by data availability first, MASSIVE last if no data
     p1_items = [r for r in results if r["meta"].get("priority") == 1]
-    if zone_key == "US":
-        p1_items = sorted(p1_items, key=lambda r: 0 if r["meta"].get("source") == "MASSIVE" else 1)
+    p1_items = sorted(p1_items, key=lambda r: (0 if r["latest"] is not None else 1, r["meta"].get("key", "")))
     
     if not p1_items:
         st.warning(f"No indicators found for {zone_key}")
@@ -98,7 +97,7 @@ def render_zone_tab(zone_key: str):
             has_charts = True
             src = item["latest"].get("provider") if item.get("latest") else meta.get("source")
             fig = px.line(hist, x="observation_time", y="value", title=f"{meta['display_name']} ({src})")
-            (c1 if idx == 0 else c2).plotly_chart(fig, use_container_width=True)
+            (c1 if idx == 0 else c2).plotly_chart(fig, use_container_width=True, key=f"chart_{zone_key}_{idx}")
             
     if not has_charts:
          if zone_key == "US":
