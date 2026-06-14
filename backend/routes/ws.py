@@ -73,7 +73,7 @@ def _get_snapshot(zone: str, country: str | None) -> dict:
 
     # Live Yahoo Finance overlay for US daily financial indicators — bypass FRED 1-day lag
     if zone == "US":
-        yf_keys = ["us_vix", "us_10y", "us_30y"]
+        yf_keys = ["us_vix", "us_10y", "us_30y", "us_3m"]
         yf_quotes = equities.fetch_quotes(yf_keys)
         items_map = {i["key"]: i for i in items}
         for key, q in yf_quotes.items():

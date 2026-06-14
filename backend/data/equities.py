@@ -38,6 +38,8 @@ SYMBOL_MAP: dict[str, str] = {
     # US Treasury yields (value in % — e.g. 4.487 means 4.487%)
     "us_10y":            "^TNX",
     "us_30y":            "^TYX",
+    # Short-term rates
+    "us_3m":             "^IRX",
     # Volatility
     "us_vix":            "^VIX",
     # Commodities (futures — same-day prices, no FRED lag)

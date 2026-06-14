@@ -115,8 +115,8 @@
   display_name: 3-Month Treasury Yield
   category: Rates
   region: US
-  source: FRED
-  series_id: DGS3MO
+  source: YF_CHART
+  series_id: "^IRX"
   frequency: daily
   unit: Percent
   transform_default: level
