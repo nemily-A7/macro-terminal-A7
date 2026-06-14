@@ -348,8 +348,8 @@
   display_name: Trade Weighted US Dollar
   category: FX
   region: GLOBAL
-  source: FRED
-  series_id: DTWEXBGS
+  source: YF_CHART
+  series_id: "DX-Y.NYB"
   frequency: daily
   unit: Index 2006=100
   transform_default: level
@@ -408,8 +408,8 @@
   display_name: EUR/USD
   category: Markets
   region: GLOBAL
-  source: FRED
-  series_id: DEXUSEU
+  source: YF_CHART
+  series_id: "EURUSD=X"
   frequency: daily
   unit: USD
   transform_default: level
@@ -421,8 +421,8 @@
   display_name: USD/JPY
   category: Markets
   region: GLOBAL
-  source: FRED
-  series_id: DEXJPUS
+  source: YF_CHART
+  series_id: "USDJPY=X"
   frequency: daily
   unit: JPY
   transform_default: level
@@ -434,8 +434,8 @@
   display_name: GBP/USD
   category: Markets
   region: GLOBAL
-  source: FRED
-  series_id: DEXUSUK
+  source: YF_CHART
+  series_id: "GBPUSD=X"
   frequency: daily
   unit: USD
   transform_default: level
@@ -447,8 +447,8 @@
   display_name: AUD/USD
   category: Markets
   region: GLOBAL
-  source: FRED
-  series_id: DEXUSAL
+  source: YF_CHART
+  series_id: "AUDUSD=X"
   frequency: daily
   unit: USD
   transform_default: level
@@ -460,8 +460,8 @@
   display_name: USD/CNY
   category: Markets
   region: GLOBAL
-  source: FRED
-  series_id: DEXCHUS
+  source: YF_CHART
+  series_id: "USDCNY=X"
   frequency: daily
   unit: CNY
   transform_default: level
@@ -678,8 +678,8 @@
   display_name: EUR/USD
   category: Rates
   region: EU
-  source: FRED
-  series_id: DEXUSEU
+  source: YF_CHART
+  series_id: "EURUSD=X"
   frequency: daily
   unit: USD
   transform_default: level
@@ -690,8 +690,8 @@
   display_name: EUR/GBP
   category: Rates
   region: EU
-  source: LIVE_ONLY
-  series_id: ""
+  source: YF_CHART
+  series_id: "EURGBP=X"
   frequency: daily
   unit: GBP
   transform_default: level

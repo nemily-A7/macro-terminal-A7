@@ -57,12 +57,12 @@ def _get_snapshot(zone: str, country: str | None) -> dict:
 
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
-    # Live FX overlay for EU zone — override FRED daily values with Twelve Data intraday
+    # Live FX overlay for EU zone — Yahoo Finance spot rates (saves Twelve Data credits)
     if zone == "EU":
         eu_fx_keys = ["eu_eurusd", "eu_eurgbp"]
-        eu_fx_quotes = twelvedata.fetch_quotes(eu_fx_keys)
+        eu_yf_quotes = equities.fetch_quotes(eu_fx_keys)
         items_map = {i["key"]: i for i in items}
-        for key, q in eu_fx_quotes.items():
+        for key, q in eu_yf_quotes.items():
             items_map[key] = {
                 "key":   key,
                 "value": q.get("price"),

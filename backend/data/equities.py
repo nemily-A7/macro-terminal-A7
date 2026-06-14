@@ -47,6 +47,16 @@ SYMBOL_MAP: dict[str, str] = {
     "market_brent":      "BZ=F",
     "market_natgas":     "NG=F",
     "market_gold":       "GC=F",
+    # FX spot rates
+    "market_eurusd":     "EURUSD=X",
+    "market_usdjpy":     "USDJPY=X",
+    "market_gbpusd":     "GBPUSD=X",
+    "market_audusd":     "AUDUSD=X",
+    "market_usdcny":     "USDCNY=X",
+    "eu_eurusd":         "EURUSD=X",
+    "eu_eurgbp":         "EURGBP=X",
+    # Dollar Index
+    "global_dxy":        "DX-Y.NYB",
 }
 
 
