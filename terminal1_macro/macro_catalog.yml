@@ -139,8 +139,8 @@
   display_name: 10-Year Treasury Yield
   category: Rates
   region: US
-  source: FRED
-  series_id: DGS10
+  source: YF_CHART
+  series_id: "^TNX"
   frequency: daily
   unit: Percent
   transform_default: level
@@ -151,8 +151,8 @@
   display_name: 30-Year Treasury Yield
   category: Rates
   region: US
-  source: FRED
-  series_id: DGS30
+  source: YF_CHART
+  series_id: "^TYX"
   frequency: daily
   unit: Percent
   transform_default: level
@@ -323,8 +323,8 @@
   display_name: VIX Index
   category: Risk_Sentiment
   region: US
-  source: FRED
-  series_id: VIXCLS
+  source: YF_CHART
+  series_id: "^VIX"
   frequency: daily
   unit: Index
   transform_default: level
@@ -474,8 +474,8 @@
   display_name: WTI Crude
   category: Markets
   region: GLOBAL
-  source: FRED
-  series_id: DCOILWTICO
+  source: YF_CHART
+  series_id: "CL=F"
   frequency: daily
   unit: USD/bbl
   transform_default: level
@@ -487,8 +487,8 @@
   display_name: Brent Crude
   category: Markets
   region: GLOBAL
-  source: FRED
-  series_id: DCOILBRENTEU
+  source: YF_CHART
+  series_id: "BZ=F"
   frequency: daily
   unit: USD/bbl
   transform_default: level
@@ -500,8 +500,8 @@
   display_name: Natural Gas
   category: Markets
   region: GLOBAL
-  source: FRED
-  series_id: DHHNGSP
+  source: YF_CHART
+  series_id: "NG=F"
   frequency: daily
   unit: USD/MMBtu
   transform_default: level
@@ -1318,8 +1318,8 @@
   display_name: Gold
   category: Markets
   region: GLOBAL
-  source: FRED
-  series_id: GOLDAMGBD228NLBM
+  source: YF_CHART
+  series_id: "GC=F"
   frequency: daily
   unit: USD/oz
   transform_default: level

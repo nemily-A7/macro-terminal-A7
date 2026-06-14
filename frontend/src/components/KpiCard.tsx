@@ -108,7 +108,9 @@ export default function KpiCard({ indicator, onClick, selected, animDelay = 0 }:
           </p>
           {date && (
             <p className="text-[10px] text-muted mt-1">
-              {new Date(date).toLocaleDateString("en-US", { month: "short", year: "numeric", timeZone: "UTC" })}
+              {indicator.frequency === "daily"
+                ? new Date(date).toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" })
+                : new Date(date).toLocaleDateString("en-US", { month: "short", year: "numeric", timeZone: "UTC" })}
             </p>
           )}
         </div>

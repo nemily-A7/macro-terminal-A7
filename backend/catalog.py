@@ -1,4 +1,4 @@
-import yaml
+﻿import yaml
 from pathlib import Path
 
 _BASE = Path(__file__).parent.parent / "terminal1_macro"

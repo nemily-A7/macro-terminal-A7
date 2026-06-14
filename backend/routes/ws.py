@@ -1,9 +1,10 @@
 from __future__ import annotations
 import asyncio
+from datetime import datetime, timezone
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect, Query
 from backend.catalog import load_catalog, load_geo_profiles
 from backend.data.loader import resolve
-from backend.data import twelvedata
+from backend.data import twelvedata, equities
 
 router = APIRouter()
 
@@ -54,6 +55,8 @@ def _get_snapshot(zone: str, country: str | None) -> dict:
         for key, q in live_quotes.items()
     }
 
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
     # Live FX overlay for EU zone — override FRED daily values with Twelve Data intraday
     if zone == "EU":
         eu_fx_keys = ["eu_eurusd", "eu_eurgbp"]
@@ -63,7 +66,21 @@ def _get_snapshot(zone: str, country: str | None) -> dict:
             items_map[key] = {
                 "key":   key,
                 "value": q.get("price"),
-                "date":  (q.get("datetime") or "")[:10],
+                "date":  today,
+                "delta": q.get("change"),
+            }
+        items = list(items_map.values())
+
+    # Live Yahoo Finance overlay for US daily financial indicators — bypass FRED 1-day lag
+    if zone == "US":
+        yf_keys = ["us_vix", "us_10y", "us_30y"]
+        yf_quotes = equities.fetch_quotes(yf_keys)
+        items_map = {i["key"]: i for i in items}
+        for key, q in yf_quotes.items():
+            items_map[key] = {
+                "key":   key,
+                "value": q.get("price"),
+                "date":  today,
                 "delta": q.get("change"),
             }
         items = list(items_map.values())

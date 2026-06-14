@@ -1,5 +1,5 @@
 from __future__ import annotations
-from backend.data import fred, ecb, worldbank, eurostat, oecd, gpr, dbnomics
+from backend.data import fred, ecb, worldbank, eurostat, oecd, gpr, dbnomics, yahoo_history
 
 
 def _apply_transform(rows: list[dict], transform: str, frequency: str) -> list[dict]:
@@ -80,6 +80,9 @@ def resolve(ind: dict, selected_country: str | None) -> dict:
             else:
                 key = key_template
             raw = oecd.fetch_historical(dataset, key)
+
+    elif source == "YF_CHART":
+        raw = yahoo_history.fetch_historical(series_id)
 
     elif source == "GPR":
         raw = gpr.fetch_historical(series_id)

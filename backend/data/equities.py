@@ -4,6 +4,7 @@ No API key required. Covers EU and ASIA major indices.
 Cache: 1-min TTL to avoid hammering the endpoint.
 """
 import time
+import random
 import requests
 from threading import Lock
 
@@ -18,7 +19,7 @@ _cache: dict[str, tuple[float, dict]] = {}
 _lock = Lock()
 
 SYMBOL_MAP: dict[str, str] = {
-    # US equities (FRED has historical; Yahoo gives intraday)
+    # US equities
     "market_sp500":      "^GSPC",
     "market_nasdaq":     "^IXIC",
     "market_djia":       "^DJI",
@@ -34,41 +35,59 @@ SYMBOL_MAP: dict[str, str] = {
     "market_kospi":      "^KS11",
     "market_asx200":     "^AXJO",
     "market_csi300":     "000300.SS",
+    # US Treasury yields (value in % — e.g. 4.487 means 4.487%)
+    "us_10y":            "^TNX",
+    "us_30y":            "^TYX",
+    # Volatility
+    "us_vix":            "^VIX",
+    # Commodities (futures — same-day prices, no FRED lag)
+    "market_wti":        "CL=F",
+    "market_brent":      "BZ=F",
+    "market_natgas":     "NG=F",
+    "market_gold":       "GC=F",
 }
 
 
 def _fetch_one(symbol: str) -> dict | None:
-    try:
-        resp = requests.get(
-            f"{_BASE}/{symbol}",
-            headers=_HEADERS,
-            params={"interval": "1d", "range": "1d"},
-            timeout=8,
-        )
-        if resp.status_code != 200:
-            return None
-        data = resp.json()
-        results = data.get("chart", {}).get("result")
-        if not results:
-            return None
-        meta = results[0].get("meta", {})
-        price = meta.get("regularMarketPrice")
-        if not price:
-            return None
-        prev = float(meta.get("previousClose") or meta.get("chartPreviousClose") or price)
-        price = float(price)
-        change = round(price - prev, 4)
-        pct = round((change / prev * 100) if prev else 0, 4)
-        return {
-            "price":          price,
-            "prev_close":     prev,
-            "change":         change,
-            "pct_change":     pct,
-            "is_market_open": meta.get("marketState") == "REGULAR",
-            "datetime":       str(meta.get("regularMarketTime", "")),
-        }
-    except Exception:
-        return None
+    for attempt in range(3):
+        try:
+            resp = requests.get(
+                f"{_BASE}/{symbol}",
+                headers=_HEADERS,
+                params={"interval": "1d", "range": "1d"},
+                timeout=8,
+            )
+            if resp.status_code == 429:
+                retry_after = resp.headers.get("Retry-After")
+                wait = float(retry_after) if retry_after else min(60.0, 2.0 ** attempt + random.uniform(0, 1))
+                time.sleep(wait)
+                continue
+            if resp.status_code != 200:
+                return None
+            data = resp.json()
+            results = data.get("chart", {}).get("result")
+            if not results:
+                return None
+            meta = results[0].get("meta", {})
+            price = meta.get("regularMarketPrice")
+            if not price:
+                return None
+            prev = float(meta.get("previousClose") or meta.get("chartPreviousClose") or price)
+            price = float(price)
+            change = round(price - prev, 4)
+            pct = round((change / prev * 100) if prev else 0, 4)
+            return {
+                "price":          price,
+                "prev_close":     prev,
+                "change":         change,
+                "pct_change":     pct,
+                "is_market_open": meta.get("marketState") == "REGULAR",
+                "datetime":       str(meta.get("regularMarketTime", "")),
+            }
+        except Exception:
+            if attempt < 2:
+                time.sleep(2.0 ** attempt + random.uniform(0, 0.5))
+    return None
 
 
 def fetch_quotes(keys: list[str]) -> dict[str, dict]:

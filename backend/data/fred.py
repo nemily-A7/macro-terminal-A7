@@ -1,10 +1,16 @@
 import os
+import time
 import requests
 import pandas as pd
+from threading import Semaphore
 from backend.cache import ttl_cache
 from backend import db as _db
 
 _mem: dict[str, list[dict]] = {}  # L1 in-process cache
+
+# Limit concurrent FRED API requests to prevent Akamai IP-level rate blocking.
+# 4 parallel requests max; 150 ms breathing room between each call inside the semaphore.
+_FRED_SEM = Semaphore(4)
 
 BASE_URL = "https://api.stlouisfed.org/fred"
 _API_KEY = os.getenv("FRED_API_KEY", "fde5589cb6f49add72064defa1643452")
@@ -99,12 +105,16 @@ def fetch_historical(series_id: str) -> list[dict] | None:
     if cached is not None:
         _mem[series_id] = cached
         return cached
-    # L3: FRED API
-    resp = requests.get(
-        f"{BASE_URL}/series/observations",
-        params={"series_id": series_id, "api_key": _API_KEY, "file_type": "json"},
-        timeout=10,
-    )
+    # L3: FRED API — throttled to prevent Akamai rate-limiting
+    with _FRED_SEM:
+        if series_id in _mem:           # re-check after acquiring semaphore
+            return _mem[series_id]
+        time.sleep(0.15)               # 150 ms spacing between concurrent callers
+        resp = requests.get(
+            f"{BASE_URL}/series/observations",
+            params={"series_id": series_id, "api_key": _API_KEY, "file_type": "json"},
+            timeout=10,
+        )
     if resp.status_code != 200:
         return None
     obs = resp.json().get("observations", [])

@@ -1,5 +1,6 @@
 import os
 import time
+import random
 import requests
 from threading import Lock
 
@@ -57,12 +58,20 @@ def fetch_quotes(keys: list[str]) -> dict[str, dict]:
 
     symbols = ",".join(SYMBOL_MAP[k] for k in missing)
     try:
-        resp = requests.get(
-            f"{_BASE}/quote",
-            params={"symbol": symbols, "apikey": _API_KEY},
-            timeout=10,
-        )
-        if resp.status_code != 200:
+        resp = None
+        for attempt in range(3):
+            resp = requests.get(
+                f"{_BASE}/quote",
+                params={"symbol": symbols, "apikey": _API_KEY},
+                timeout=10,
+            )
+            if resp.status_code == 429:
+                retry_after = resp.headers.get("Retry-After")
+                wait = float(retry_after) if retry_after else min(60.0, 10.0 * (2 ** attempt) + random.uniform(0, 2))
+                time.sleep(wait)
+                continue
+            break
+        if resp is None or resp.status_code != 200:
             return result
 
         raw = resp.json()
